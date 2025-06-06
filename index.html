@@ -3,124 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生宿舍报修系统</title>
-    <script src="script.js"></script>
+    <title>校园社团管理系统</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1><i class="fas fa-tools"></i> 学生宿舍报修系统</h1>
+    <header>
+        <div class="container">
+            <h1>校园社团管理系统</h1>
             <nav>
                 <ul>
-                    <li><a href="#" class="active"><i class="fas fa-home"></i> 首页</a></li>
-                    <li><a href="#"><i class="fas fa-plus-circle"></i> 提交报修</a></li>
-                    <li><a href="#"><i class="fas fa-history"></i> 报修记录</a></li>
-                    <li><a href="#"><i class="fas fa-user"></i> 个人中心</a></li>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#clubs">社团</a></li>
+                    <li><a href="#events">活动</a></li>
+                    <li><a href="#members">成员</a></li>
+                    <li><a href="#about">关于</a></li>
                 </ul>
             </nav>
-        </header>
+            <div class="user-actions">
+                <button id="loginBtn">登录</button>
+                <button id="registerBtn">注册</button>
+            </div>
+        </div>
+    </header>
 
-        <main>
-            <section class="welcome-section">
-                <h2>欢迎使用宿舍报修系统</h2>
-                <p>请选择您需要的服务：</p>
-                <div class="action-buttons">
-                    <a href="#" class="btn primary"><i class="fas fa-plus"></i> 提交新报修</a>
-                    <a href="#" class="btn secondary"><i class="fas fa-list"></i> 查看报修记录</a>
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>欢迎来到校园社团管理系统</h2>
+                <p>管理你的社团，组织活动，连接成员</p>
+                <button class="cta-button">了解更多</button>
+            </div>
+        </section>
+
+        <section id="clubs" class="clubs-section">
+            <div class="container">
+                <h2>我们的社团</h2>
+                <div class="clubs-grid" id="clubsGrid">
+                    <!-- 社团将通过JS动态加载 -->
                 </div>
-            </section>
+                <button id="loadMoreClubs" class="load-more">加载更多</button>
+            </div>
+        </section>
 
-            <section class="repair-form">
-                <h2><i class="fas fa-wrench"></i> 报修申请</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="student-id">学号</label>
-                        <input type="text" id="student-id" placeholder="请输入您的学号" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="name">姓名</label>
-                        <input type="text" id="name" placeholder="请输入您的姓名" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="building">宿舍楼</label>
-                        <select id="building" required>
-                            <option value="">请选择宿舍楼</option>
-                            <option value="1">1号楼</option>
-                            <option value="2">2号楼</option>
-                            <option value="3">3号楼</option>
-                            <option value="4">4号楼</option>
-                            <option value="5">5号楼</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="room">房间号</label>
-                        <input type="text" id="room" placeholder="例如：101" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="repair-type">报修类型</label>
-                        <select id="repair-type" required>
-                            <option value="">请选择报修类型</option>
-                            <option value="electricity">电力问题</option>
-                            <option value="plumbing">管道问题</option>
-                            <option value="furniture">家具损坏</option>
-                            <option value="network">网络问题</option>
-                            <option value="other">其他问题</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="description">问题描述</label>
-                        <textarea id="description" rows="5" placeholder="请详细描述您遇到的问题..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="photo">上传照片</label>
-                        <input type="file" id="photo" accept="image/*">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="contact">联系电话</label>
-                        <input type="tel" id="contact" placeholder="请输入您的联系电话" required>
-                    </div>
-                    
-                    <button type="submit" class="btn primary"><i class="fas fa-paper-plane"></i> 提交报修</button>
-                </form>
-            </section>
-
-            <section class="status-section">
-                <h2><i class="fas fa-clipboard-list"></i> 报修状态</h2>
-                <div class="status-cards">
-                    <div class="status-card pending">
-                        <h3>待处理</h3>
-                        <p class="count">5</p>
-                        <a href="#" class="btn small">查看详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <div class="status-card in-progress">
-                        <h3>处理中</h3>
-                        <p class="count">3</p>
-                        <a href="#" class="btn small">查看详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <div class="status-card completed">
-                        <h3>已完成</h3>
-                        <p class="count">12</p>
-                        <a href="#" class="btn small">查看详情 <i class="fas fa-arrow-right"></i></a>
-                    </div>
+        <section id="events" class="events-section">
+            <div class="container">
+                <h2>近期活动</h2>
+                <div class="events-list" id="eventsList">
+                    <!-- 活动将通过JS动态加载 -->
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <footer>
-            <p>&copy; 2025 学生宿舍报修系统 | @23508014班</p>
-            <p>联系电话：123-456789 | 邮箱：repair@school.edu</p>
-        </footer>
+        <section id="members" class="members-section">
+            <div class="container">
+                <h2>社团成员</h2>
+                <div class="search-bar">
+                    <input type="text" id="memberSearch" placeholder="搜索成员...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="members-table">
+                    <table id="membersTable">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>学号</th>
+                                <th>社团</th>
+                                <th>职位</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- 成员将通过JS动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <p>校园社团管理系统致力于为学生社团提供高效的管理工具。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#clubs">社团</a></li>
+                        <li><a href="#events">活动</a></li>
+                        <li><a href="#members">成员</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p>邮箱: clubs@school.edu</p>
+                    <p>电话: 123-456-7890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 校园社团管理系统. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>用户登录</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">用户名:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">登录</button>
+            </form>
+        </div>
     </div>
+
+    <!-- 注册模态框 -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>用户注册</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="regUsername">用户名:</label>
+                    <input type="text" id="regUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">邮箱:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">密码:</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">确认密码:</label>
+                    <input type="password" id="regConfirmPassword" required>
+                </div>
+                <button type="submit">注册</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
